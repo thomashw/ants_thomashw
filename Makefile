@@ -8,7 +8,9 @@ EXECUTABLE=MyBot
 all: $(OBJECTS) $(EXECUTABLE)
 
 $(EXECUTABLE): $(OBJECTS)
-	$(CC) $(LDFLAGS) $(OBJECTS) -o $@
+	$(CC) $(OBJECTS) -o $@ $(LDFLAGS)
+
+	cp $(EXECUTABLE) "$(HOME)/Desktop/tools/$(EXECUTABLE)"
 
 .c.o:
 	$(CC) $(CFLAGS) $< -o $@

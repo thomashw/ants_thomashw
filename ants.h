@@ -30,6 +30,11 @@ struct my_ant {
     int col;
 };
 
+struct ant_destination {
+    struct my_ant ant;
+    struct ant_destination *next;
+};
+
 struct food {
     int row;
     int col;
@@ -40,7 +45,8 @@ struct game_state {
     struct basic_ant *enemy_ants;
     struct food *food;
     struct basic_ant *dead_ants;
-    
+    struct ant_destination *ant_destination_head;
+
     int my_count;
     int enemy_count;
     int food_count;
