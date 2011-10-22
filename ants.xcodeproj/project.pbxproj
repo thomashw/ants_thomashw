@@ -1,0 +1,98 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXFileReference section */
+		E966393214537BD40042EC54 /* ants.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = ants.c; sourceTree = "<group>"; };
+		E966393314537BD40042EC54 /* ants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ants.h; sourceTree = "<group>"; };
+		E966393514537BD40042EC54 /* Makefile */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
+		E966393714537BD40042EC54 /* MyBot.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = MyBot.c; sourceTree = "<group>"; };
+		E966393914537BD40042EC54 /* README */ = {isa = PBXFileReference; lastKnownFileType = text; path = README; sourceTree = "<group>"; };
+		E966393A14537BD40042EC54 /* YourCode.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = YourCode.c; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		E966392614537BB30042EC54 = {
+			isa = PBXGroup;
+			children = (
+				E966393D14537C230042EC54 /* Source */,
+				E966393E14537C300042EC54 /* Headers */,
+				E966393514537BD40042EC54 /* Makefile */,
+				E966393914537BD40042EC54 /* README */,
+			);
+			sourceTree = "<group>";
+		};
+		E966393D14537C230042EC54 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				E966393214537BD40042EC54 /* ants.c */,
+				E966393714537BD40042EC54 /* MyBot.c */,
+				E966393A14537BD40042EC54 /* YourCode.c */,
+			);
+			name = Source;
+			sourceTree = "<group>";
+		};
+		E966393E14537C300042EC54 /* Headers */ = {
+			isa = PBXGroup;
+			children = (
+				E966393314537BD40042EC54 /* ants.h */,
+			);
+			name = Headers;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXProject section */
+		E966392814537BB30042EC54 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+			};
+			buildConfigurationList = E966392B14537BB30042EC54 /* Build configuration list for PBXProject "ants" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = E966392614537BB30042EC54;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+			);
+		};
+/* End PBXProject section */
+
+/* Begin XCBuildConfiguration section */
+		E966392D14537BB30042EC54 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Debug;
+		};
+		E966392E14537BB30042EC54 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		E966392B14537BB30042EC54 /* Build configuration list for PBXProject "ants" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E966392D14537BB30042EC54 /* Debug */,
+				E966392E14537BB30042EC54 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = E966392814537BB30042EC54 /* Project object */;
+}

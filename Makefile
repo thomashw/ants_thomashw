@@ -10,7 +10,8 @@ all: $(OBJECTS) $(EXECUTABLE)
 $(EXECUTABLE): $(OBJECTS)
 	$(CC) $(OBJECTS) -o $@ $(LDFLAGS)
 
-	cp $(EXECUTABLE) "$(HOME)/Desktop/tools/$(EXECUTABLE)"
+	cp $(EXECUTABLE) "../tools/$(EXECUTABLE)"
+	rm "../tools/debug.txt"
 
 .c.o:
 	$(CC) $(CFLAGS) $< -o $@

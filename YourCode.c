@@ -80,7 +80,6 @@ void do_turn(struct game_state *Game, struct game_info *Info) {
             dir = 'W';
 
         // Now we do our move
-
         if (dir != -1)
             move(i, dir, Game, Info);
     }
