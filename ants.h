@@ -5,6 +5,8 @@
 
 // this header is basically self-documenting
 
+#define kDirectionCount 4 // N, E, S, W
+
 struct game_info {
 	int loadtime;
 	int turntime;
@@ -38,6 +40,11 @@ struct ant_destination {
 struct food {
     int row;
     int col;
+};
+
+struct location {
+	int row;
+	int col;
 };
 
 struct game_state {

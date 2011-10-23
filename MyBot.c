@@ -1,5 +1,7 @@
 #include "ants.h"
 
+struct location get_location(char dir, int old_row, int old_col, struct game_info *Info);
+
 // returns the absolute value of a number; used in distance function
 
 int abs(int x) {
@@ -35,59 +37,71 @@ int distance(int row1, int col1, int row2, int col2, struct game_info *Info) {
 
 // sends a move to the tournament engine and keeps track of ants new location
 
-void move(int index, char dir, struct game_state* Game, struct game_info* Info) {
+void move(int index, int possibleDirs[], struct game_state* Game, struct game_info* Info) {
     
-    struct my_ant temp;
-    temp.row = Game->my_ants[index].row;
-    temp.col = Game->my_ants[index].col;
-    int i;
-    FILE *file;
+    struct location temp;
+    int i, j;
+	char dir = '0';
     
-    switch (dir) {
-        case 'N':
-            if (temp.row != 0)
-                temp.row -= 1;
-            else
-                temp.row = Info->rows - 1;
-            break;
-        case 'E':
-            if (temp.col != Info->cols - 1)
-                temp.col += 1;
-            else
-                temp.col = 0;
-            break;
-        case 'S':
-            if (temp.row != Info->rows - 1)
-                temp.row += 1;
-            else
-                temp.row = 0;
-            break;
-        case 'W':
-            if (temp.col != 0)
-                temp.col -= 1;
-            else
-                temp.col = Info->cols - 1;
-            break;
-    }
-    
-    file = fopen("debug.txt", "a");
-    fprintf(file, "\n\nant id: %i\n", Game->my_ants[index].id);
-    for( i = 0; i < Game->my_count; i++ ) {
-        fprintf(file, "Possible row: %i\n", temp.row );
-        fprintf(file, "Possible col: %i\n", temp.col );
-        fprintf(file, "Ant row: %i\n", Game->my_ants[index].row );
-        fprintf(file, "Ant col: %i\n", Game->my_ants[index].col );
-        if( Game->my_ants[i].row == temp.row && Game->my_ants[i].col == temp.col ) {
-            fprintf(file, "Collision will occur. Return!\n");
-            return;
-        }
-    }
-    fclose(file);
-    
-    fprintf(stdout, "O %i %i %c\n", Game->my_ants[index].row, Game->my_ants[index].col, dir);
-    
-    Game->my_ants[index].row = temp.row;
-    Game->my_ants[index].col = temp.col;
+	for( i = 0; i < kDirectionCount; i++ ) {
+		temp.row = Game->my_ants[index].row;
+		temp.col = Game->my_ants[index].col;
+		
+		temp = get_location(possibleDirs[i], Game->my_ants[index].row, Game->my_ants[index].col, Info);
+		for( j = 0; j < Game->my_count; j++ ) {
+			if( Game->my_ants[j].row == temp.row && Game->my_ants[j].col == temp.col ) {
+				possibleDirs[i] = '0';
+			}
+		}
+	}
+	
+	for( i = 0; i < kDirectionCount; i++ ) {
+		if( possibleDirs[i] != '0' ) {
+			fprintf(stdout, "O %i %i %c\n", Game->my_ants[index].row, Game->my_ants[index].col, possibleDirs[i]);
+			temp = get_location(possibleDirs[i], Game->my_ants[index].row, Game->my_ants[index].col, Info);
+			Game->my_ants[index].row = temp.row;
+			Game->my_ants[index].col = temp.col;
+			break;
+		}
+	}
+}
+
+struct location get_location(char dir, int old_row, int old_col, struct game_info *Info)
+{
+	struct location temp;
+	temp.row = old_row;
+	temp.col = old_col;
+	
+	switch (dir) {
+		case 'N':
+			if (temp.row != 0)
+				temp.row -= 1;
+			else
+				temp.row = Info->rows - 1;
+			break;
+		case 'E':
+			if (temp.col != Info->cols - 1)
+				temp.col += 1;
+			else
+				temp.col = 0;
+			break;
+		case 'S':				
+			if (temp.row != Info->rows - 1)
+				temp.row += 1;
+			else
+				temp.row = 0;
+			break;
+		case 'W':
+			if (temp.col != 0)
+				temp.col -= 1;
+			else
+				temp.col = Info->cols - 1;
+			break;
+		default:
+			break;
+	}
+	
+	return temp;
 }
 
 // just a function that returns the string on a given line for i/o
